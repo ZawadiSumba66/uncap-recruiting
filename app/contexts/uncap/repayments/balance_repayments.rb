@@ -13,10 +13,14 @@ module Uncap
 
         def balance_repayments!(repayments, date_received, amount_received_from_payment)
           # YOUR CODE HERE
-          
-          repayments
+          repayments.order('created_at ASC')
+          date_received
+          amount_received_from_payment
+          if amount_received_from_payment > amount 
+            balance = amount_received_from_payment - amount
+            return repayments << amount
+          end
         end
-
       end
     end
   end
